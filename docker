@@ -1,0 +1,20 @@
+# Use a lightweight base image
+FROM python:3.9-slim
+
+# Set working directory in the container
+WORKDIR /app
+
+# Copy application files
+COPY . /app
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose application port
+EXPOSE 5000
+
+# Define environment variables
+ENV FLASK_ENV=production
+
+# Set default command to run the application
+CMD ["python", "app.py"]
